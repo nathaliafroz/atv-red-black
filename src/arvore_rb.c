@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "../include/arvore_rb.h"
 
+/* protótipos internos (uso apenas neste arquivo) */
+static void RB_insert_fixup(ArvoreRB *T, NoRB *z);
+static void bstInsert(ArvoreRB *T, NoRB *z);
+
+
 struct NoRB {
     int chave;
     Cor cor;
@@ -14,6 +19,14 @@ struct ArvoreRB {
     NoRB *raiz;
     NoRB *Nil;
 };
+
+/* Funções de acesso */
+NoRB *getRaiz(ArvoreRB *T) { return T->raiz; }
+NoRB *getNil(ArvoreRB *T) { return T->Nil; }
+
+Cor getCor(NoRB *n) { return n->cor; }
+NoRB *getEsq(NoRB *n) { return n->esq; }
+NoRB *getDir(NoRB *n) { return n->dir; }
 
 ArvoreRB* criarArvoreRB() {
     ArvoreRB *T = malloc(sizeof(ArvoreRB));
@@ -173,4 +186,63 @@ void RB_insert_fixup(ArvoreRB *T, NoRB *z) {
 
     // Garante propriedade da raiz
     T->raiz->cor = PRETO;
+}
+
+static void bstInsert(ArvoreRB *T, NoRB *z) {
+    NoRB *y = T->Nil;
+    NoRB *x = T->raiz;
+
+    while (x != T->Nil) {
+        y = x;
+        if (z->chave < x->chave)
+            x = x->esq;
+        else
+            x = x->dir;
+    }
+
+    z->pai = y;
+
+    if (y == T->Nil)
+        T->raiz = z;
+    else if (z->chave < y->chave)
+        y->esq = z;
+    else
+        y->dir = z;
+
+    z->esq = T->Nil;
+    z->dir = T->Nil;
+    z->cor = VERMELHO;
+}
+static void rbInsertFixup(ArvoreRB *T, NoRB *z) {
+    while (z->pai->cor == VERMELHO) {
+        NoRB *pai = z->pai;
+        NoRB *avo = pai->pai;
+
+        if (pai == avo->esq) {
+            NoRB *tio = avo->dir;
+
+            /* CASO 1: tio vermelho */
+            if (tio->cor == VERMELHO) {
+                pai->cor = PRETO;
+                tio->cor = PRETO;
+                avo->cor = VERMELHO;
+                z = avo;
+            } else {
+                break; // Casos 2 e 3 depois
+            }
+        } else {
+            break; // simétrico depois
+        }
+    }
+
+    T->raiz->cor = PRETO;
+}
+
+
+void rbInsert(ArvoreRB *T, int chave) {
+    NoRB *z = malloc(sizeof(NoRB));
+    z->chave = chave;
+
+    bstInsert(T, z);
+    rbInsertFixup(T, z);
 }
