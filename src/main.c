@@ -9,7 +9,11 @@ void testeInsercaoCaso2(void);
 void testeInsercaoCaso3(void);
 
 void testeRemocaoNoVermelho(void);
+
 void testeRemocaoCaso1(void);
+void testeRemocaoCaso2(void);
+void testeRemocaoCaso3(void);
+void testeRemocaoCaso4(void);
 
 int main() {
 
@@ -37,6 +41,15 @@ int main() {
 
     printf("\nCaso 1 da Remocao (irmao vermelho):\n");
     testeRemocaoCaso1();
+
+    printf("\nCaso 2 da Remocao (irmao preto, filhos pretos):\n");
+    testeRemocaoCaso2();
+
+    printf("\nCaso 3 da Remocao (filho interno vermelho):\n");
+    testeRemocaoCaso3();
+
+    printf("\nCaso 4 da Remocao (filho externo vermelho):\n");testeRemocaoCaso4();
+
 
     return 0;
 }

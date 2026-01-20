@@ -113,3 +113,89 @@ void testeRemocaoCaso1(void) {
     else
         printf("Teste Remocao Caso 1 (irmao vermelho): FALHA\n");
 }
+
+
+void testeRemocaoCaso2(void) {
+    ArvoreRB *T = criarArvoreRB();
+
+    /*
+        Estrutura antes da remoção:
+                10(B)
+               /     \
+            5(B)     15(B)
+           /
+        1(R)
+
+        Remoção de 1 força Caso 2:
+        irmão preto com filhos pretos
+    */
+
+    RB_insert(T, 10);
+    RB_insert(T, 5);
+    RB_insert(T, 15);
+    RB_insert(T, 1);
+
+    RB_delete(T, 1);
+
+    if (verificarIntegridade(T))
+        printf("Teste Remocao Caso 2 (irmao preto, filhos pretos): OK\n");
+    else
+        printf("Teste Remocao Caso 2 (irmao preto, filhos pretos): FALHA\n");
+}
+
+
+void testeRemocaoCaso3(void) {
+    ArvoreRB *T = criarArvoreRB();
+
+    /*
+        Estrutura antes da remoção:
+                10(B)
+               /     \
+            5(B)     20(B)
+                    /
+                 15(R)
+
+        Remoção de 5 força Caso 3
+        (irmao preto, filho interno vermelho)
+    */
+
+    RB_insert(T, 10);
+    RB_insert(T, 5);
+    RB_insert(T, 20);
+    RB_insert(T, 15);
+
+    RB_delete(T, 5);
+
+    if (verificarIntegridade(T))
+        printf("Teste Remocao Caso 3 (filho interno vermelho): OK\n");
+    else
+        printf("Teste Remocao Caso 3 (filho interno vermelho): FALHA\n");
+}
+
+void testeRemocaoCaso4(void) {
+    ArvoreRB *T = criarArvoreRB();
+
+    /*
+        Estrutura antes da remoção:
+                10(B)
+               /     \
+            5(B)     20(B)
+                        \
+                        25(R)
+
+        Remoção de 5 força Caso 4
+        (irmao preto, filho externo vermelho)
+    */
+
+    RB_insert(T, 10);
+    RB_insert(T, 5);
+    RB_insert(T, 20);
+    RB_insert(T, 25);
+
+    RB_delete(T, 5);
+
+    if (verificarIntegridade(T))
+        printf("Teste Remocao Caso 4 (filho externo vermelho): OK\n");
+    else
+        printf("Teste Remocao Caso 4 (filho externo vermelho): FALHA\n");
+}

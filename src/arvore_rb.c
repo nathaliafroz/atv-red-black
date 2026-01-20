@@ -13,6 +13,7 @@ static void transplantRB(ArvoreRB *T, NoRB *u, NoRB *v);
 static NoRB* treeMinimum(ArvoreRB *T, NoRB *x);
 
 
+
 struct NoRB {
     int chave;
     Cor cor;
