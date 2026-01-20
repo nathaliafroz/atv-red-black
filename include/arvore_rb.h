@@ -10,9 +10,7 @@ typedef struct ArvoreRB ArvoreRB;
 ArvoreRB* criarArvoreRB();
 void destruirArvoreRB(ArvoreRB *T);
 
-// Operações estruturais
-void rotacaoEsquerda(ArvoreRB *T, NoRB *x);
-void rotacaoDireita(ArvoreRB *T, NoRB *y);
+
 
 // Inserção
 void RB_insert(ArvoreRB *T, int chave);
@@ -32,7 +30,7 @@ Cor getCor(NoRB *n);
 NoRB *getEsq(NoRB *n);
 NoRB *getDir(NoRB *n);
 
-void rbInsert(ArvoreRB *T, int chave);
+
 
 
 #endif
