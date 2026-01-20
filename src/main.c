@@ -6,6 +6,7 @@ int verificarIntegridade(ArvoreRB *T);
 void testeInsercaoCaso1(void);
 void testeInsercaoCaso2(void);
 void testeInsercaoCaso3(void);
+void testeRemocaoNoVermelho(void);
 
 int main() {
 
@@ -27,6 +28,9 @@ int main() {
 
     printf("\nCaso 3 (rotacao final):\n");
     testeInsercaoCaso3();
+
+    printf("\nTeste Remocao - No Vermelho:\n");
+    testeRemocaoNoVermelho();
 
     return 0;
 }

@@ -69,3 +69,19 @@ void testeInsercaoCaso3(void) {
     else
         printf("Teste Insercao Caso 3: FALHA\n");
 }
+
+void testeRemocaoNoVermelho(void) {
+    ArvoreRB *T = criarArvoreRB();
+
+    RB_insert(T, 10);
+    RB_insert(T, 5);
+    RB_insert(T, 15);
+
+    // 15 é vermelho
+    RB_delete(T, 15);
+
+    if (verificarIntegridade(T))
+        printf("Teste Remocao No Vermelho: OK\n");
+    else
+        printf("Teste Remocao No Vermelho: FALHA\n");
+}

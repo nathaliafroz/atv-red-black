@@ -15,10 +15,10 @@ void destruirArvoreRB(ArvoreRB *T);
 // Inserção
 void RB_insert(ArvoreRB *T, int chave);
 
-// Remoção (ainda não implementada)
-void RB_remove(ArvoreRB *T, int chave);
+// Remoção 
+void RB_delete(ArvoreRB *T, int chave);
 
-// Auditoria (ainda não implementada)
+// Auditoria 
 int verificarIntegridade(ArvoreRB *T);
 
 
