@@ -85,3 +85,31 @@ void testeRemocaoNoVermelho(void) {
     else
         printf("Teste Remocao No Vermelho: FALHA\n");
 }
+
+
+void testeRemocaoCaso1(void) {
+    ArvoreRB *T = criarArvoreRB();
+
+    /*
+        Estrutura antes da remoção:
+                10(B)
+               /     \
+            5(B)     20(R)
+                     /
+                  15(B)
+
+        Remoção de 5 força Caso 1 (irmão vermelho)
+    */
+
+    RB_insert(T, 10);
+    RB_insert(T, 5);
+    RB_insert(T, 20);
+    RB_insert(T, 15);
+
+    RB_delete(T, 5);
+
+    if (verificarIntegridade(T))
+        printf("Teste Remocao Caso 1 (irmao vermelho): OK\n");
+    else
+        printf("Teste Remocao Caso 1 (irmao vermelho): FALHA\n");
+}

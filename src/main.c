@@ -3,10 +3,13 @@
 
 /* funções externas (definidas em teste_rb.c) */
 int verificarIntegridade(ArvoreRB *T);
+
 void testeInsercaoCaso1(void);
 void testeInsercaoCaso2(void);
 void testeInsercaoCaso3(void);
+
 void testeRemocaoNoVermelho(void);
+void testeRemocaoCaso1(void);
 
 int main() {
 
@@ -31,6 +34,9 @@ int main() {
 
     printf("\nTeste Remocao - No Vermelho:\n");
     testeRemocaoNoVermelho();
+
+    printf("\nCaso 1 da Remocao (irmao vermelho):\n");
+    testeRemocaoCaso1();
 
     return 0;
 }
